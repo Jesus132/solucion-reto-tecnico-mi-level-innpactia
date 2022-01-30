@@ -39,13 +39,13 @@ export class HomeComponent implements OnInit {
   getSetting(): void{
     this.settingService.getSetting().subscribe(
       (resp: any) => {
-        console.log(resp);
-        this.list = resp.settings;
-        this._list = resp.settings;
-        // this.dashService.storage = resp;
-        // this.list = this.dashService.storage;
+        const list = resp.settings.sort(function(a: any, b: any){
+          return +new Date(b.date) - +new Date(a.date);
+        });
+        this.list = list;
+        this._list = list;
       },
-      (err) => {
+      (err: any) => {
         console.log(err);
         // Swal.fire({
         //   icon: 'error',
