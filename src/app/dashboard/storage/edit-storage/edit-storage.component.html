@@ -1,0 +1,69 @@
+<form [formGroup]="FormStorage">
+
+    <div class="header">
+  
+      <svg class="left-arrow-svg" (click)="storageService.add_edit=0" viewBox="0 0 24 24" width="40" height="40">
+        <path d="M0 0h24v24H0V0z" fill="none" />
+        <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
+      </svg>
+      <p class="header-name">Editar Producto</p>
+  
+    </div>
+  
+    <div class="body">
+  
+      <mat-form-field class="example-form-field">
+        <mat-label>Nombre</mat-label>
+        <input matInput type="text" maxlength="30" formControlName="name">
+        <button mat-button matSuffix mat-icon-button disabled>
+          <mat-icon class="INVALID"
+            *ngIf="FormStorage.controls.name.status === 'INVALID' && FormStorage.controls.name.touched">close</mat-icon>
+        </button>
+        <button mat-button matSuffix mat-icon-button disabled *ngIf="FormStorage.controls.name.status === 'VALID'">
+          <mat-icon class="VALID">done</mat-icon>
+        </button>
+      </mat-form-field>
+  
+      <mat-form-field class="example-form-field">
+        <mat-label>Descripción</mat-label>
+        <input matInput type="text" maxlength="30" formControlName="description">
+        <button mat-button matSuffix mat-icon-button disabled>
+          <mat-icon class="INVALID"
+            *ngIf="FormStorage.controls.description.status === 'INVALID' && FormStorage.controls.description.touched">
+            close</mat-icon>
+        </button>
+        <button mat-button matSuffix mat-icon-button disabled *ngIf="FormStorage.controls.description.status === 'VALID'">
+          <mat-icon class="VALID">done</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field class="example-form-field">
+        <mat-label>Precio</mat-label>
+        <input matInput type="number" maxlength="10" formControlName="price">
+        <button mat-button matSuffix mat-icon-button disabled>
+          <mat-icon class="INVALID"
+            *ngIf="FormStorage.controls.price.status === 'INVALID' && FormStorage.controls.price.touched">
+            close</mat-icon>
+        </button>
+        <button mat-button matSuffix mat-icon-button disabled *ngIf="FormStorage.controls.price.status === 'VALID'">
+          <mat-icon class="VALID">done</mat-icon>
+        </button>
+      </mat-form-field>
+  
+      <mat-form-field class="example-form-field">
+        <mat-label>Cantidad</mat-label>
+        <input matInput type="number" maxlength="10" formControlName="cont">
+        <button mat-button matSuffix mat-icon-button disabled>
+          <mat-icon class="INVALID"
+            *ngIf="FormStorage.controls.cont.status === 'INVALID' && FormStorage.controls.cont.touched">
+            close</mat-icon>
+        </button>
+        <button mat-button matSuffix mat-icon-button disabled *ngIf="FormStorage.controls.cont.status === 'VALID'">
+          <mat-icon class="VALID">done</mat-icon>
+        </button>
+      </mat-form-field>
+  
+    </div>
+    <button mat-raised-button color="primary" (click)="putStorage()">Guardar</button>
+  
+  </form>
+  

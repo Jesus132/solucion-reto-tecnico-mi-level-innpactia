@@ -1,0 +1,39 @@
+<div class="home">
+
+  <div class="filter">
+    <mat-form-field appearance="fill">
+      <mat-label>Rango de fechas</mat-label>
+      <mat-date-range-input [formGroup]="range" [rangePicker]="picker" [min]="minDate" [max]="maxDate">
+        <input matStartDate formControlName="start" placeholder="Final inicial">
+        <input matEndDate formControlName="end" placeholder="Fecha final">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+  
+      <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+      <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" (click)="filtre()">Filtro</button>
+  </div>
+
+  <div class="products-container">
+
+    <div class="product-card" *ngFor="let item of list">
+
+      <div class="card-container">
+        <div class="up">
+          <p class="txt">{{item.storage.client.name}}</p>
+          <p class="txt-date">{{item.date}}</p>
+        </div>
+        <div class="bottom">
+          <p class="txt">{{item.storage.model}}</p>
+          <p class="txt">{{item.observation}}</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

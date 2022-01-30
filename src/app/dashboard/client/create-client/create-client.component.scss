@@ -1,0 +1,50 @@
+form {
+    width: 100%;
+    height: 100%;
+  
+    .header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+  
+      .left-arrow-svg {
+        cursor: pointer;
+        fill: #adadad;
+        transition: all 350ms;
+  
+        &:hover {
+          transition: all 450ms;
+          background: #00000020;
+          transform: rotate(360deg);
+          border-radius: 25px;
+          fill: #308df7;
+        }
+      }
+  
+      .bill-svg {
+        margin: 7px 0 0 0;
+      }
+  
+      .header-name {
+        margin: 0;
+        width: 75%;
+        text-align: left;
+        font-size: 1.5rem;
+        // color: #ffffff;
+        text-shadow: 0.5px 0.5px 0.8px #00000020;
+      }
+    }
+  
+    .body {
+      width: 100%;
+      height: 100%;
+      padding: 8px;
+      display: grid;
+      grid-auto-rows: 4rem;
+      background: #00000000;
+      grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  
+    }
+  
+  }
+  
