@@ -1,0 +1,43 @@
+<form [formGroup]="FormClient">
+
+    <div class="header">
+  
+      <svg class="left-arrow-svg" (click)="clientService.add_edit=0" viewBox="0 0 24 24" width="40" height="40">
+        <path d="M0 0h24v24H0V0z" fill="none" />
+        <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
+      </svg>
+      <p class="header-name">Nuevo Cliente</p>
+  
+    </div>
+  
+    <div class="body">
+  
+      <mat-form-field class="example-form-field">
+        <mat-label>Nombre</mat-label>
+        <input matInput type="text" maxlength="30" formControlName="name">
+        <button mat-button matSuffix mat-icon-button disabled>
+          <mat-icon class="INVALID"
+            *ngIf="FormClient.controls.name.status === 'INVALID' && FormClient.controls.name.touched">close</mat-icon>
+        </button>
+        <button mat-button matSuffix mat-icon-button disabled *ngIf="FormClient.controls.name.status === 'VALID'">
+          <mat-icon class="VALID">done</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field class="example-form-field">
+        <mat-label>Numero de Contacto</mat-label>
+        <input matInput type="number" maxlength="10" formControlName="phone">
+        <button mat-button matSuffix mat-icon-button disabled>
+          <mat-icon class="INVALID"
+            *ngIf="FormClient.controls.phone.status === 'INVALID' && FormClient.controls.phone.touched">
+            close</mat-icon>
+        </button>
+        <button mat-button matSuffix mat-icon-button disabled *ngIf="FormClient.controls.phone.status === 'VALID'">
+          <mat-icon class="VALID">done</mat-icon>
+        </button>
+      </mat-form-field>
+  
+    </div>
+    <button mat-raised-button color="primary" [disabled]="FormClient.status === 'INVALID'" (click)="postClient()">Guardar</button>
+  
+  </form>

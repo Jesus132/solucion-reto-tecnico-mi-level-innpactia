@@ -1,0 +1,70 @@
+<div class="container">
+  <mat-card>
+    <div class="title">Bienvenido</div>
+    <form [formGroup]="FormLog" *ngIf="logSignUp">
+      <div class="body">
+        <mat-form-field class="example-form-field">
+          <mat-label>Correo</mat-label>
+          <input matInput type="text" maxlength="30" formControlName="email">
+          <button mat-button matSuffix mat-icon-button disabled>
+            <mat-icon class="INVALID"
+              *ngIf="FormLog.controls.email.status === 'INVALID' && FormLog.controls.email.touched">
+              close</mat-icon>
+          </button>
+          <button mat-button matSuffix mat-icon-button disabled *ngIf="FormLog.controls.email.status === 'VALID'">
+            <mat-icon class="VALID">done</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field class="example-form-field">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" maxlength="30" formControlName="password">
+          <button mat-button matSuffix mat-icon-button disabled>
+            <mat-icon class="INVALID"
+              *ngIf="FormLog.controls.password.status === 'INVALID' && FormLog.controls.password.touched">
+              close</mat-icon>
+          </button>
+          <button mat-button matSuffix mat-icon-button disabled *ngIf="FormLog.controls.password.status === 'VALID'">
+            <mat-icon class="VALID">done</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <div class="btn _green" (click)="login()">Ingresar</div>
+      <div class="btn" (click)="logSignUp=false">Registrarse</div>
+    </form>
+    <form [formGroup]="FormLog" *ngIf="!logSignUp">
+      <div class="body">
+        <mat-form-field class="example-form-field">
+          <mat-label>Correo</mat-label>
+          <input matInput type="text" maxlength="30" formControlName="email">
+          <button mat-button matSuffix mat-icon-button disabled>
+            <mat-icon class="INVALID"
+              *ngIf="FormLog.controls.email.status === 'INVALID' && FormLog.controls.email.touched">
+              close</mat-icon>
+          </button>
+          <button mat-button matSuffix mat-icon-button disabled *ngIf="FormLog.controls.email.status === 'VALID'">
+            <mat-icon class="VALID">done</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field class="example-form-field">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" maxlength="30" [formControl]="_password">
+        </mat-form-field>
+        <mat-form-field class="example-form-field">
+          <mat-label>Confirma contraseña</mat-label>
+          <input matInput type="password" maxlength="30" formControlName="password">
+          <button mat-button matSuffix mat-icon-button disabled>
+            <mat-icon class="INVALID"
+              *ngIf="FormLog.value.password !== _password.value && FormLog.controls.password.touched">
+              close</mat-icon>
+          </button>
+          <button mat-button matSuffix mat-icon-button disabled
+            *ngIf="FormLog.value.password === _password.value && !FormLog.controls.password.touched">
+            <mat-icon class="VALID">done</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <div class="btn _green" (click)="SignUpUsers()">Registrarse</div>
+      <div class="btn" (click)="logSignUp=true">Ingresar</div>
+    </form>
+  </mat-card>
+</div>

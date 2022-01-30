@@ -1,0 +1,65 @@
+<form [formGroup]="FormSetting">
+
+    <div class="header">
+  
+      <svg class="left-arrow-svg" (click)="settingService.add_edit=0" viewBox="0 0 24 24" width="40" height="40">
+        <path d="M0 0h24v24H0V0z" fill="none" />
+        <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
+      </svg>
+      <p class="header-name">Nuevo Arreglo</p>
+  
+    </div>
+  
+    <div class="body">
+  
+      <mat-form-field class="example-form-field">
+        <mat-label>Modelo del Telefono</mat-label>
+        <input type="text"
+               maxlength="30"
+               matInput
+               [formControl]="autoComplet"
+               [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option.label">
+            {{option.label}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+  
+      <!-- <mat-form-field class="example-form-field">
+        <mat-label>Modelo del Telefono</mat-label>
+        <input matInput type="text" maxlength="30" formControlName="model">
+        <button mat-button matSuffix mat-icon-button disabled>
+          <mat-icon class="INVALID"
+            *ngIf="FormSetting.controls.model.status === 'INVALID' && FormSetting.controls.model.touched">close</mat-icon>
+        </button>
+        <button mat-button matSuffix mat-icon-button disabled *ngIf="FormSetting.controls.model.status === 'VALID'">
+          <mat-icon class="VALID">done</mat-icon>
+        </button>
+      </mat-form-field> -->
+
+      <mat-form-field class="example-form-field">
+        <mat-label>Fecha del Arreglo</mat-label>
+        <input formControlName="date" matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+  
+      <mat-form-field class="example-form-field">
+        <mat-label>Observación</mat-label>
+        <input matInput type="text" maxlength="30" formControlName="observation">
+        <button mat-button matSuffix mat-icon-button disabled>
+          <mat-icon class="INVALID"
+            *ngIf="FormSetting.controls.observation.status === 'INVALID' && FormSetting.controls.observation.touched">
+            close</mat-icon>
+        </button>
+        <button mat-button matSuffix mat-icon-button disabled *ngIf="FormSetting.controls.observation.status === 'VALID'">
+          <mat-icon class="VALID">done</mat-icon>
+        </button>
+      </mat-form-field>
+  
+    </div>
+    <button mat-raised-button color="primary" (click)="postSetting()">Guardar</button>
+  
+  </form>
+  
